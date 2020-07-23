@@ -1,0 +1,22 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "Creating a library of books on a page to teach myself the foundations of objects and inheritance using vanilla JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass SASS/main.scss styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruben-ruiz/library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruben-ruiz/library/issues"
+  },
+  "homepage": "https://github.com/ruben-ruiz/library#readme",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
