@@ -7,3 +7,16 @@ function Book(title, author, pages, status) {
         return `${this.title} by ${this.author}, ${this.pages}, ${status}`
     }
 }
+
+let myLibrary = [];
+
+let addBookElement = document.getElementById('addBook');
+let formContainer = document.getElementById('form-container');
+
+addBookElement.addEventListener('click', openForm);
+
+function openForm () {
+    let formContainerStyle = window.getComputedStyle(formContainer).getPropertyValue("display");
+    
+    (formContainerStyle == 'none') ? formContainer.style.display = 'block': formContainer.style.display = 'none';
+}
