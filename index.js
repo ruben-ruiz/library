@@ -8,15 +8,28 @@ function Book(title, author, pages, status) {
     }
 }
 
-let myLibrary = [];
-
-let addBookElement = document.getElementById('addBook');
-let formContainer = document.getElementById('form-container');
-
-addBookElement.addEventListener('click', openForm);
-
-function openForm () {
+function openCloseForm () {
     let formContainerStyle = window.getComputedStyle(formContainer).getPropertyValue("display");
     
     (formContainerStyle == 'none') ? formContainer.style.display = 'block': formContainer.style.display = 'none';
 }
+
+function addBooks() {
+    let titleInput = document.getElementById('book-title').value;
+    let authorInput = document.getElementById('book-author').value;
+    let pagesInput = document.getElementById('book-pages').value;
+    let statusInput = document.getElementById('book-status').value;
+
+    myLibrary.push(new Book(titleInput, authorInput, pagesInput, statusInput));
+}
+
+let submitBtn = document.querySelector('.btn-submit');
+submitBtn.addEventListener('click', addBooks);
+
+
+let formContainer = document.getElementById('form-container');
+let addBookElement = document.getElementById('addBook');
+addBookElement.addEventListener('click', openCloseForm);
+
+let myLibrary = [];
+
