@@ -19,8 +19,18 @@ function addBooks() {
     let authorInput = document.getElementById('book-author').value;
     let pagesInput = document.getElementById('book-pages').value;
     let statusInput = document.getElementById('book-status').value;
-
     myLibrary.push(new Book(titleInput, authorInput, pagesInput, statusInput));
+    render(myLibrary[myLibrary.length - 1]);
+}
+
+function render(newBook) {
+    console.log(bookSection.innerHTML);
+    bookSection.innerHTML +=`<div class="library-books">
+                                <div class="library-books__prop book-title">${newBook.title}</div>
+                                <div class="library-books__prop book-author">${newBook.author}</div>
+                                <div class="library-books__prop book-pages">${newBook.pages}</div>
+                                <div class="library-books__prop book-status">${newBook.status}</div>
+                            </div>`;
 }
 
 let submitBtn = document.querySelector('.btn-submit');
@@ -30,6 +40,11 @@ submitBtn.addEventListener('click', addBooks);
 let formContainer = document.getElementById('form-container');
 let addBookElement = document.getElementById('addBook');
 addBookElement.addEventListener('click', openCloseForm);
+
+let bookSection = document.querySelector('.library');
+
+// let template = `<h1>Hello World!</h1>`
+// render(template, document.querySelector('.book'));
 
 let myLibrary = [];
 
