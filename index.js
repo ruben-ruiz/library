@@ -24,8 +24,8 @@ function addBooks() {
 }
 
 function render(newBook) {
-    console.log(bookSection.innerHTML);
-    bookSection.innerHTML +=`<div class="library-books">
+    let bookIndex = myLibrary.indexOf(newBook);
+    bookSection.innerHTML +=`<div class="library-books book-index${bookIndex}">
                                 <div class="library-books__prop book-title">${newBook.title}</div>
                                 <div class="library-books__prop book-author">${newBook.author}</div>
                                 <div class="library-books__prop book-pages">${newBook.pages}</div>
