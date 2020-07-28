@@ -30,8 +30,25 @@ function render(newBook) {
                                 <div class="library-books__prop book-author">${newBook.author}</div>
                                 <div class="library-books__prop book-pages">${newBook.pages}</div>
                                 <div class="library-books__prop book-status">${newBook.status}</div>
+                                <div class="library-books__prop">
+                                    <button class="book-delete">
+                                        <svg id="deleteBook-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                            <title>cancel-circle</title>
+                                            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+                                            <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>`;
 }
+
+
+document.querySelector('.library').addEventListener('click', function(e) {
+    if(!e.target) { return; }
+    if(e.target.classList.contains('book-delete')) {
+        event.target.closest('.library-books').remove();
+    };
+});
 
 let submitBtn = document.querySelector('.btn-submit');
 submitBtn.addEventListener('click', addBooks);
@@ -42,9 +59,6 @@ let addBookElement = document.getElementById('addBook');
 addBookElement.addEventListener('click', openCloseForm);
 
 let bookSection = document.querySelector('.library');
-
-// let template = `<h1>Hello World!</h1>`
-// render(template, document.querySelector('.book'));
 
 let myLibrary = [];
 
