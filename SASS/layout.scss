@@ -1,22 +1,50 @@
+.main {
+    min-height: 10rem;
+    max-width: 60vw;
+    margin: auto;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 1rem 1rem 2rem #C2C1C1;
+    padding: 2rem;
+}
+
+.header {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+
+    h1 {
+        margin: auto;
+    }
+}
+
 .library {
-    height: 80vh;
-    width: 80vw;
     margin: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
 
     &-headings {
-    display: grid;
-    grid-template-columns: 1.25fr 1fr .65fr .75fr .1fr;
-    grid-template-rows: auto;
-    row-gap: .5rem;
+        font-size: 1.2rem;
+        border-bottom: 2px solid;
+        border-color: #2350A3;
+
+        display: grid;
+        grid-template-columns: 1fr .75fr .5fr .5fr .1fr;
+        grid-template-rows: auto;
+        row-gap: .5rem;
     }
 
     &-books {
         display: grid;
-        grid-template-columns: 1.25fr 1fr .65fr .75fr .1fr;
-        grid-template-rows: auto;
+        align-items: center;
+        grid-template-columns: 1fr .75fr .5fr .5fr .1fr;
+        grid-template-rows: 2rem;
         row-gap: .5rem;
+
+        font-size: .8rem;
+        border-bottom: 1px solid;
+        border-color: #2350A3;
     }
 }

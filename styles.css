@@ -4,25 +4,49 @@ html {
   padding: 0; }
 
 body {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  font-family: 'Merriweather', serif;
+  background-color: #EDECEC; }
+
+.main {
+  min-height: 10rem;
+  max-width: 60vw;
+  margin: auto;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 1rem 1rem 2rem #C2C1C1;
+  padding: 2rem; }
+
+.header {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  margin: 2rem 0; }
+  .header h1 {
+    margin: auto; }
 
 .library {
-  height: 80vh;
-  width: 80vw;
   margin: auto;
   text-align: center;
   display: flex;
   flex-direction: column; }
   .library-headings {
+    font-size: 1.2rem;
+    border-bottom: 2px solid;
+    border-color: #2350A3;
     display: grid;
-    grid-template-columns: 1.25fr 1fr .65fr .75fr .1fr;
+    grid-template-columns: 1fr .75fr .5fr .5fr .1fr;
     grid-template-rows: auto;
     row-gap: .5rem; }
   .library-books {
     display: grid;
-    grid-template-columns: 1.25fr 1fr .65fr .75fr .1fr;
-    grid-template-rows: auto;
-    row-gap: .5rem; }
+    align-items: center;
+    grid-template-columns: 1fr .75fr .5fr .5fr .1fr;
+    grid-template-rows: 2rem;
+    row-gap: .5rem;
+    font-size: .8rem;
+    border-bottom: 1px solid;
+    border-color: #2350A3; }
 
 #form-container {
   display: none;
@@ -32,8 +56,13 @@ body {
   transform: translate(-50%, -50%); }
 
 #form-book {
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
+  border-style: solid;
+  border-color: #C1C1C1;
+  padding: 1rem;
+  background-color: #E5E5E5;
+  font-size: .9rem;
   display: grid;
   grid-template-columns: [label] auto [input] 10rem;
   justify-content: space-evenly; }
@@ -41,7 +70,8 @@ body {
 label {
   grid-column: label;
   align-self: center;
-  text-align: right; }
+  text-align: right;
+  margin-right: 1rem; }
 
 input {
   grid-column: input;
@@ -65,6 +95,7 @@ button {
 .book-delete {
   height: 1rem;
   width: 1rem;
+  margin-top: 4px;
   background-color: transparent;
   border: 0;
   padding: 0;
