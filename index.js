@@ -53,8 +53,6 @@ function render(newBook) {
                         </div>
                     </div>`;
     document.querySelector('.library').append(div);
-
-    firebase.database().ref("book").set(document.getElementsByClassName("library-books").value);
 }
 
 
