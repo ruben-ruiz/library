@@ -107,15 +107,20 @@
     });
  }
 
+ function removeBook(e) {
+    if (!e.target) {
+        return;
+    }
+    if (e.target.classList.contains('book-delete')) {
+        let key = e.target.parentElement.parentElement.getAttribute("data-key");
+        bookToRemove = firebase.database().ref("newBook/" + key);
+        bookToRemove.remove();
+        event.target.closest('.library-books').remove();
+    };
+ }
 
- document.querySelector('.library').addEventListener('click', function (e) {
-     if (!e.target) {
-         return;
-     }
-     if (e.target.classList.contains('book-delete')) {
-         event.target.closest('.library-books').remove();
-     };
- });
+
+ document.querySelector('.library').addEventListener('click', removeBook);
 
  let submitBtn = document.querySelector('.btn-submit');
  submitBtn.addEventListener('click', addBooks);
