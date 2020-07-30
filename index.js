@@ -13,17 +13,6 @@
  firebase.initializeApp(firebaseConfig);
  firebase.database()
 
-
- function Book(title, author, pages, status) {
-     this.title = title
-     this.author = author
-     this.pages = pages
-     this.status = status
-     this.info = function () {
-         return `${this.title} by ${this.author}, ${this.pages}, ${status}`
-     }
- }
-
  function openCloseForm() {
      let formContainerStyle = window.getComputedStyle(formContainer).getPropertyValue("display");
 
@@ -142,10 +131,12 @@
          return;
      }
      if (e.target.classList.contains('book-status__input')) {
-        let key = e.target.parentElement.parentElement.getAttribute("data-key");
-        let changeStatus = firebase.database().ref("newBook/" + key);
-        status = e.target.checked;
-        changeStatus.update({statusInput: status});
+         let key = e.target.parentElement.parentElement.getAttribute("data-key");
+         let changeStatus = firebase.database().ref("newBook/" + key);
+         status = e.target.checked;
+         changeStatus.update({
+             statusInput: e.target.checked
+         });
 
      };
  }
@@ -163,7 +154,4 @@
  let addBookElement = document.getElementById('addBook');
  addBookElement.addEventListener('click', openCloseForm);
 
- let bookSection = document.querySelector('.library');
-
- let myLibrary = [];
  let libraryContainer = document.getElementById("library");
