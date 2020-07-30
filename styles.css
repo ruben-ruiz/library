@@ -135,7 +135,8 @@ button {
       width: 50%;
       height: 100%;
       transform-style: preserve-3d;
-      cursor: pointer; }
+      cursor: pointer;
+      pointer-events: none; }
     .book-status__input-span:nth-child(2) {
       left: 0;
       border-top-left-radius: 10rem;

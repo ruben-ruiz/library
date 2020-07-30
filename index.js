@@ -31,77 +31,83 @@
  }
 
  function addBooks() {
-    let key = firebase.database().ref().child("newBook").push().key;
+     let key = firebase.database().ref().child("newBook").push().key;
 
-    let book = {
-        titleInput: document.getElementById('book-title').value,
-        authorInput: document.getElementById('book-author').value,
-        pagesInput: document.getElementById('book-pages').value,
-        key: key,
-    };
+     let book = {
+         titleInput: document.getElementById('book-title').value,
+         authorInput: document.getElementById('book-author').value,
+         pagesInput: document.getElementById('book-pages').value,
+         statusInput: document.getElementById('book-status').checked,
+         key: key,
+     };
 
-    let updates = {};
+     let updates = {};
 
-    updates["/newBook/" + key] = book;
-    firebase.database().ref().update(updates);
+     updates["/newBook/" + key] = book;
+     firebase.database().ref().update(updates);
 
-    let bookArray = [];
-    firebase.database().ref('newBook').limitToLast(1).once('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            let childKey = childSnapshot.key;
-            let childData = childSnapshot.val();
-            bookArray.push(Object.values(childData));
-        })
-        
-        addToLibrary(bookArray);
-    });
+     let bookArray = [];
+     firebase.database().ref('newBook').limitToLast(1).once('value', function (snapshot) {
+         snapshot.forEach(function (childSnapshot) {
+             let childKey = childSnapshot.key;
+             let childData = childSnapshot.val();
+             bookArray.push(Object.values(childData));
+         })
+
+         addToLibrary(bookArray);
+     });
  }
 
  function render() {
-    let bookArray = [];
-    firebase.database().ref('newBook').once('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            let childKey = childSnapshot.key;
-            let childData = childSnapshot.val();
-            bookArray.push(Object.values(childData));
-        })
-        
-        addToLibrary(bookArray);
-    });
+     let bookArray = [];
+     firebase.database().ref('newBook').once('value', function (snapshot) {
+         snapshot.forEach(function (childSnapshot) {
+             let childKey = childSnapshot.key;
+             let childData = childSnapshot.val();
+             bookArray.push(Object.values(childData));
+         })
+
+         addToLibrary(bookArray);
+     });
  }
 
  function addToLibrary(bookArr) {
-    for(let i = 0; i < bookArr.length; i++) {
-        let author = bookArr[i][0];
-        let keyData = bookArr[i][1];
-        let pages = bookArr[i][2];
-        let title = bookArr[i][3];
+     for (let i = 0; i < bookArr.length; i++) {
+         let author = bookArr[i][0];
+         let keyData = bookArr[i][1];
+         let pages = bookArr[i][2];
+         let status = bookArr[i][3];
+         let title = bookArr[i][4];
 
-        let libraryDiv = document.createElement('div');
-        libraryDiv.setAttribute("class", "library-books");
-        libraryDiv.setAttribute("data-key", keyData);
+         let libraryDiv = document.createElement('div');
+         libraryDiv.setAttribute("class", "library-books");
+         libraryDiv.setAttribute("data-key", keyData);
 
-        let titleDiv = document.createElement('div');
-        titleDiv.setAttribute("class", "library-books__prop book-title");
-        titleDiv.innerHTML = title;
+         let titleDiv = document.createElement('div');
+         titleDiv.setAttribute("class", "library-books__prop book-title");
+         titleDiv.innerHTML = title;
 
-        let authorDiv = document.createElement('div');
-        authorDiv.setAttribute("class", "library-books__prop book-author");
-        authorDiv.innerHTML = author;
+         let authorDiv = document.createElement('div');
+         authorDiv.setAttribute("class", "library-books__prop book-author");
+         authorDiv.innerHTML = author;
 
-        let pagesDiv = document.createElement('div');
-        pagesDiv.setAttribute("class", "library-books__prop book-pages");
-        pagesDiv.innerHTML = pages;
+         let pagesDiv = document.createElement('div');
+         pagesDiv.setAttribute("class", "library-books__prop book-pages");
+         pagesDiv.innerHTML = pages;
 
-        let statusDiv = document.createElement('div');
-        statusDiv.setAttribute("class", "library-books__prop book-status");
-        statusDiv.innerHTML =  `<input type="checkbox" class="book-status__input">
+         let statusDiv = document.createElement('div');
+         statusDiv.setAttribute("class", "library-books__prop book-status");
+         statusDiv.innerHTML = (status) ?
+             `<input type="checkbox" class="book-status__input" checked>
+                                <span class="book-status__input-span">Yes</span>
+                                <span class="book-status__input-span">No</span>` :
+             `<input type="checkbox" class="book-status__input">
                                 <span class="book-status__input-span">Yes</span>
                                 <span class="book-status__input-span">No</span>`;
 
-        let removeDiv = document.createElement('div');
-        removeDiv.setAttribute("class", "library-books__prop book-remove");
-        removeDiv.innerHTML = `<button class="book-delete">
+         let removeDiv = document.createElement('div');
+         removeDiv.setAttribute("class", "library-books__prop book-remove");
+         removeDiv.innerHTML = `<button class="book-delete">
                                     <svg id="deleteBook-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                                         <title>cancel-circle</title>
                                         <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
@@ -109,29 +115,43 @@
                                     </svg>
                                 </button>`;
 
-        libraryContainer.append(libraryDiv);
-        libraryDiv.append(titleDiv);
-        libraryDiv.append(authorDiv);
-        libraryDiv.append(pagesDiv);
-        libraryDiv.append(statusDiv);
-        libraryDiv.append(removeDiv);
-    }
+         libraryContainer.append(libraryDiv);
+         libraryDiv.append(titleDiv);
+         libraryDiv.append(authorDiv);
+         libraryDiv.append(pagesDiv);
+         libraryDiv.append(statusDiv);
+         libraryDiv.append(removeDiv);
+     }
  }
 
  function removeBook(e) {
-    if (!e.target) {
-        return;
-    }
-    if (e.target.classList.contains('book-delete')) {
+     if (!e.target) {
+         return;
+     }
+     if (e.target.classList.contains('book-delete')) {
+         let key = e.target.parentElement.parentElement.getAttribute("data-key");
+         bookToRemove = firebase.database().ref("newBook/" + key);
+         bookToRemove.remove();
+         event.target.closest('.library-books').remove();
+     };
+ }
+
+ function updateStatus(e) {
+     if (!e.target) {
+         return;
+     }
+     if (e.target.classList.contains('book-status__input')) {
         let key = e.target.parentElement.parentElement.getAttribute("data-key");
-        bookToRemove = firebase.database().ref("newBook/" + key);
-        bookToRemove.remove();
-        event.target.closest('.library-books').remove();
-    };
+        let changeStatus = firebase.database().ref("newBook/" + key);
+        status = e.target.checked;
+        changeStatus.update({statusInput: status});
+     };
  }
 
 
  document.querySelector('.library').addEventListener('click', removeBook);
+
+ document.querySelector('.library').addEventListener('click', updateStatus);
 
  let submitBtn = document.querySelector('.btn-submit');
  submitBtn.addEventListener('click', addBooks);
