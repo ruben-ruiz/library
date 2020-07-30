@@ -77,6 +77,7 @@
          let keyData = bookArr[i][1];
          let pages = bookArr[i][2];
          let status = bookArr[i][3];
+         console.log(status);
          let title = bookArr[i][4];
 
          let libraryDiv = document.createElement('div');
@@ -97,7 +98,7 @@
 
          let statusDiv = document.createElement('div');
          statusDiv.setAttribute("class", "library-books__prop book-status");
-         statusDiv.innerHTML = (status === "true") ?
+         statusDiv.innerHTML = (status === true) ?
              `<input type="checkbox" class="book-status__input" checked>
                                 <span class="book-status__input-span">Yes</span>
                                 <span class="book-status__input-span">No</span>` :
