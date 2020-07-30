@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body onload="render();">
     <main class="main">
         <header class="header">
             <h1>My Library</h1>
@@ -100,7 +100,7 @@
                 </svg>
             </a>
         </header>
-        <div class="library">
+        <div class="library" id="library">
             <div class="library-headings">
                 <div class="library-header library-title">Title</div>
                 <div class="library-header library-author">Author</div>
@@ -117,41 +117,14 @@
             <input type="text" id="book-author">
             <label for="book-pages">Number of Pages</label>
             <input type="number" id="book-pages">
-            <!-- <label for="book-status">Have you read it?</label>
-            <input type="text   " id="book-status"> -->
             <button class="btn btn-submit">Submit</button>
         </form>
     </div>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCMVN4rM89ayGc0xI6NBPD_BgXxYMpaNlg",
-            authDomain: "library-fe5ca.firebaseapp.com",
-            databaseURL: "https://library-fe5ca.firebaseio.com",
-            projectId: "library-fe5ca",
-            storageBucket: "library-fe5ca.appspot.com",
-            messagingSenderId: "656439959932",
-            appId: "1:656439959932:web:85d645a903c35c5c4d04f9",
-            measurementId: "G-J2330PC40J"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        firebase.storage()
-        firebase.database()
-    </script>
     <script src="index.js"></script>
 </body>
 
