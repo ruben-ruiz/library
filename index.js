@@ -17,6 +17,11 @@
      let formContainerStyle = window.getComputedStyle(formContainer).getPropertyValue("display");
 
      (formContainerStyle == 'none') ? formContainer.style.display = 'block': formContainer.style.display = 'none';
+
+     document.getElementById('book-title').value = "";
+     document.getElementById('book-author').value = "";
+     document.getElementById('book-pages').value = "";
+     document.getElementById('book-status').checked = false;
  }
 
  function addBooks() {
@@ -45,6 +50,8 @@
 
          addToLibrary(bookArray);
      });
+
+     openCloseForm();
  }
 
  function render() {
@@ -141,6 +148,8 @@
      };
  }
 
+ let formContainer = document.getElementById('form-container');
+
  let libraryContainer = document.getElementById("library");
 
  libraryContainer.addEventListener('click', removeBook);
@@ -157,7 +166,5 @@
 
  submitBtn.addEventListener('click', addBooks);
 
-
- let formContainer = document.getElementById('form-container');
  let addBookElement = document.getElementById('addBook');
  addBookElement.addEventListener('click', openCloseForm);
