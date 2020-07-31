@@ -47,6 +47,9 @@ input {
 }
 
 #addBook {
+    height: 3rem;
+    width: 3rem;
+    z-index: 20;
     &:active {
         transform: scale(.95) translateY(5px);
     }
@@ -54,6 +57,11 @@ input {
     &-svg {
         height: 3rem;
         width: 3rem;
+        pointer-events: none;
+    }
+
+    &-svg * {
+        pointer-events: none           ;
     }
 }
 

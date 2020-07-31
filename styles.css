@@ -89,12 +89,18 @@ input {
   height: 100%;
   width: 100%; }
 
-#addBook:active {
-  transform: scale(0.95) translateY(5px); }
-
-#addBook-svg {
+#addBook {
   height: 3rem;
-  width: 3rem; }
+  width: 3rem;
+  z-index: 20; }
+  #addBook:active {
+    transform: scale(0.95) translateY(5px); }
+  #addBook-svg {
+    height: 3rem;
+    width: 3rem;
+    pointer-events: none; }
+  #addBook-svg * {
+    pointer-events: none; }
 
 .book-delete {
   height: 1rem;

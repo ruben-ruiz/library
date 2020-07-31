@@ -73,7 +73,6 @@
          let keyData = bookArr[i][1];
          let pages = bookArr[i][2];
          let status = bookArr[i][3];
-         console.log(status);
          let title = bookArr[i][4];
 
          let libraryDiv = document.createElement('div');
