@@ -141,17 +141,23 @@
      };
  }
 
+ let libraryContainer = document.getElementById("library");
 
- document.querySelector('.library').addEventListener('click', removeBook);
+ libraryContainer.addEventListener('click', removeBook);
 
- document.querySelector('.library').addEventListener('click', updateStatus);
+ libraryContainer.addEventListener('click', updateStatus);
 
- let submitBtn = document.querySelector('.btn-submit');
+ let submitBtn = document.getElementById('btn-submit');
+ submitBtn.disabled = true;
+
+ let form = document.getElementById('form-book');
+ form.addEventListener('input', function () {
+     submitBtn.disabled = !form.checkValidity()
+ });
+
  submitBtn.addEventListener('click', addBooks);
 
 
  let formContainer = document.getElementById('form-container');
  let addBookElement = document.getElementById('addBook');
  addBookElement.addEventListener('click', openCloseForm);
-
- let libraryContainer = document.getElementById("library");

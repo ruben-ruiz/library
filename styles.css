@@ -78,7 +78,7 @@ input {
   grid-column: input;
   align-self: center; }
 
-button {
+#btn-submit {
   grid-column: submit;
   align-self: center;
   justify-self: center;
